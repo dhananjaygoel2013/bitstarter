@@ -6,8 +6,10 @@ var app = express.createServer(express.logger());
 
 var buf = new Buffer(256);
 
+buf.write(fs.readFileSync('/bistarter/index.html',"utf-8"));
+
 app.get('/', function(request, response) {
-  response.send(buf.toString(fs.readFileSync('index.html')));
+  response.send(buf.toString("utf-8"));
 });
 
 var port = process.env.PORT || 5000;
